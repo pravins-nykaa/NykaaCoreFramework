@@ -2,7 +2,7 @@ Pod::Spec.new do |spec|
 
   spec.name          = "Retina"
 
-  spec.version        = "0.4.14"
+  spec.version        = "0.4.19"
 
   spec.summary        = "Nykaa - Retina SDK"
 

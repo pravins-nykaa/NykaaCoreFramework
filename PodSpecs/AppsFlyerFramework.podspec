@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "AppsFlyerFramework"
-  s.version          = "6.13.1"
+  s.version          = "6.15.0"
   s.summary          = "AppsFlyer is a mobile app tracking & attribution analytics platform."
   s.description      = <<-DESC
                         AppsFlyer allows app developers and marketers to track and analyze
