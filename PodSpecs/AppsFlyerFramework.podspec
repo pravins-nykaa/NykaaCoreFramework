@@ -10,10 +10,13 @@ Pod::Spec.new do |s|
   s.homepage         = "https://www.appsflyer.com"
   s.license          = { :type => "Custom", :text => "See https://www.appsflyer.com/legal/services-privacy-policy/" }
   s.author           = { "AppsFlyer Ltd." => "support@appsflyer.com" }
+  
+  # Source URL where the framework can be fetched
   s.source           = {
-        http: "https://github.com/AppsFlyerSDK/AppsFlyerFramework/releases/download/6.15.0/AppsFlyerLib-Binaries.zip",
-        sha256: "91a4c2508d6d49a3afaf167fcd45b46508d3b82bc039203fa832f0a214024954"
-    }
+    http: "https://github.com/AppsFlyerSDK/AppsFlyerFramework/releases/download/6.15.0/AppsFlyerLib-Binaries.zip",
+    sha256: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+  
   s.social_media_url = "https://twitter.com/AppsFlyer"
   
   s.ios.deployment_target = '14.0'
@@ -22,4 +25,3 @@ Pod::Spec.new do |s|
   
   s.requires_arc = true
 end
-
