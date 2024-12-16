@@ -11,8 +11,8 @@ Pod::Spec.new do |s|
   s.license          = { :type => "Custom", :text => "See https://www.appsflyer.com/legal/services-privacy-policy/" }
   s.author           = { "AppsFlyer Ltd." => "support@appsflyer.com" }
   s.source           = {
-        http: "https://github.com/AppsFlyerSDK/AppsFlyerFramework/releases/download/6.13.1/AppsFlyerLib-Binaries.zip",
-        sha256: "04e6803296325ddaeae4f77394e0d65979963893bdb8740545ee9c40ab7de910"
+        http: "https://github.com/AppsFlyerSDK/AppsFlyerFramework/releases/download/6.15.0/AppsFlyerLib-Binaries.zip",
+        sha256: "91a4c2508d6d49a3afaf167fcd45b46508d3b82bc039203fa832f0a214024954"
     }
   s.social_media_url = "https://twitter.com/AppsFlyer"
   
