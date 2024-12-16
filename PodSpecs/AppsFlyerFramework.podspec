@@ -1,27 +1,69 @@
 Pod::Spec.new do |s|
-  s.name             = "AppsFlyerFramework"
-  s.version          = "6.15.0"
-  s.summary          = "AppsFlyer is a mobile app tracking & attribution analytics platform."
-  s.description      = <<-DESC
-                        AppsFlyer allows app developers and marketers to track and analyze
-                        their users’ acquisition funnel from initial installation to
-                        engagement across multiple marketing channels.
-                      DESC
-  s.homepage         = "https://www.appsflyer.com"
-  s.license          = { :type => "Custom", :text => "See https://www.appsflyer.com/legal/services-privacy-policy/" }
-  s.author           = { "AppsFlyer Ltd." => "support@appsflyer.com" }
-  
-  # Source URL where the framework can be fetched
-  s.source           = {
-    http: "https://github.com/AppsFlyerSDK/AppsFlyerFramework/releases/download/6.15.0/AppsFlyerLib-Binaries.zip",
-    sha256: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-  }
-  
-  s.social_media_url = "https://twitter.com/AppsFlyer"
-  
-  s.ios.deployment_target = '14.0'
-  s.frameworks = 'UIKit', 'Foundation', 'AdSupport', 'CoreTelephony', 'SystemConfiguration', 'AppTrackingTransparency', 'StoreKit'
-  s.vendored_frameworks = 'binaries/xcframework/full/AppsFlyerLib.xcframework'
-  
-  s.requires_arc = true
+    s.name             = 'AppsFlyerFramework'
+    s.version          = '6.15.0'
+    s.summary          = 'AppsFlyer iOS SDK'
+
+    s.description      = <<-DESC
+    AppsFlyer native track allows you to find what attracts new users to your app,
+    measure all your app marketing activities on one dashboard, and add new traffic sources in minutes,
+    all without having to update SDK.
+    DESC
+
+    s.homepage         = 'https://www.appsflyer.com'
+    s.license          = { :type => 'Proprietary', :text => 'Copyright 2018 AppsFlyer Ltd. All rights reserved.' }
+    s.author           = { 'Maxim' => 'maxim\@appsflyer.com', 'Andrii' => 'andrii.h\@appsflyer.com' }
+    s.requires_arc = true
+    s.platform     = :ios, :tvos, :osx
+  s.swift_version = '5.0'
+
+
+    s.source       = {
+        http: "https://github.com/AppsFlyerSDK/AppsFlyerFramework/releases/download/6.15.0/AppsFlyerLib-Binaries.zip",
+        sha256: "91a4c2508d6d49a3afaf167fcd45b46508d3b82bc039203fa832f0a214024954"
+    }
+
+    s.ios.deployment_target = '12.0'
+    s.tvos.deployment_target = '12.0'
+    s.osx.deployment_target = '10.11'
+
+    s.ios.frameworks = 'Security', 'SystemConfiguration', 'CoreTelephony'
+    s.osx.frameworks  = 'Security'
+  s.default_subspecs = 'Main'
+
+    s.subspec 'Main' do |ss|
+       ss.resource_bundles = {'AppsFlyerLib_Privacy' => ['binaries/Resources/nonStrict/PrivacyInfo.xcprivacy']}
+       ss.ios.vendored_frameworks = 'binaries/xcframework/full/AppsFlyerLib.xcframework'
+
+       ss.tvos.vendored_frameworks = 'binaries/xcframework/full/AppsFlyerLib.xcframework'
+
+       ss.osx.vendored_frameworks = 'binaries/xcframework/full/AppsFlyerLib.xcframework'
+    end
+
+    s.subspec 'Legacy' do |ss|
+       ss.resource_bundles = {'AppsFlyerLib_Privacy' => ['binaries/Resources/nonStrict/PrivacyInfo.xcprivacy']}
+       ss.pod_target_xcconfig  = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 arm64e', 'EXCLUDED_ARCHS[sdk=appletvsimulator*]' => 'arm64 arm64e'}
+       ss.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 arm64e', 'EXCLUDED_ARCHS[sdk=appletvsimulator*]' => 'arm64 arm64e'}
+
+       ss.ios.vendored_frameworks = 'binaries/ios/AppsFlyerLib.framework'
+
+       ss.tvos.vendored_frameworks = 'binaries/tv/AppsFlyerLib.framework'
+
+       ss.osx.vendored_frameworks = 'binaries/xcframework/full/AppsFlyerLib.xcframework'
+  end
+  s.subspec 'Strict' do |ss|
+     ss.resource_bundles = {'AppsFlyerLib_Privacy' => ['binaries/Resources/Strict/PrivacyInfo.xcprivacy']}
+       ss.ios.vendored_frameworks = 'binaries/xcframework/strict/AppsFlyerLib.xcframework'
+
+       ss.tvos.vendored_frameworks = 'binaries/xcframework/strict/AppsFlyerLib.xcframework'
+
+       ss.osx.vendored_frameworks = 'binaries/xcframework/strict/AppsFlyerLib.xcframework'
+  end
+
+  s.subspec 'Dynamic' do |ss|
+       ss.ios.vendored_frameworks = 'binaries/xcframework/dynamic/AppsFlyerLib.xcframework'
+
+       ss.tvos.vendored_frameworks = 'binaries/xcframework/dynamic/AppsFlyerLib.xcframework'
+       # Dynamic framework does not support pure OSX yet
+       ss.osx.vendored_frameworks = 'binaries/xcframework/full/AppsFlyerLib.xcframework'
+  end
 end
