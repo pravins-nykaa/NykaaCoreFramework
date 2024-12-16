@@ -1,8 +1,8 @@
 Pod::Spec.new do |spec|
 
-  spec.name          = "Retina"
+   spec.name          = "Retina"
 
-  spec.version        = "0.4.19"
+  spec.version        = "0.4.21"
 
   spec.summary        = "Nykaa - Retina SDK"
 
@@ -26,5 +26,6 @@ Pod::Spec.new do |spec|
   }
 
   spec.dependency 'COREDESIGN-IOS-SDK'
+
 
 end
